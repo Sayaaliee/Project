@@ -11,7 +11,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t sayaalieee/staragileprojectfinance:v1 .'
+                    sh 'docker build -t sayaalieee/staragileprojectfinance:v2 .'
                     sh 'docker images'
                 }
             }
@@ -20,14 +20,14 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-pwd', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                     sh "echo $PASS | docker login -u $USER --password-stdin"
-                    sh 'docker push sayaalieee/staragileprojectfinance:v1'
+                    sh 'docker push sayaalieee/staragileprojectfinance:v2'
                 }
             }
         }
         
      stage('Deploy') {
             steps {
-                    sh 'sudo docker run -itd --name My-first-containe2211 -p 8083:80 sayaalieee/staragileprojectfinance:v1'
+                    sh 'sudo docker run -itd --name My-first-containe2211 -p 8083:80 sayaalieee/staragileprojectfinance:v2'
                     
                 }
             }
