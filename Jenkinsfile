@@ -27,7 +27,7 @@ pipeline {
         
      stage('Deploy') {
             steps {
-                    sh 'sudo docker run -itd -p 8081:81 sayaalieee/staragileprojectfinance:v4'
+                    sh 'sudo docker run -itd -p 8083:83 sayaalieee/staragileprojectfinance:v4'
                     
                 }
             }
